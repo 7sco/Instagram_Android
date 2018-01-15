@@ -37,7 +37,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     @Override
     public void onBindViewHolder(CardViewHolder holder, int position) {
             String url= cards.get(position).getImages().getStandard_resolution().getUrl();
-
+        Log.d("VIEWHOLDER", "onBindViewHolder: "+cards.get(position).toString());
 
             if (cards.get(position).getCaption() == null){
 
@@ -51,6 +51,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
 
             Picasso.with(context).load(url).into(holder.imageView);
 
+//            TODO: add feature when click in image you get to seee details & comments in a new activity
 
     }
 
