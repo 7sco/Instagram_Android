@@ -58,7 +58,7 @@ public class ProfileFragment extends Fragment {
         new Peticion().execute();
         timer();
         recyclerView=(RecyclerView)v.findViewById(R.id.recyclerContainer);
-        GridLayoutManager gridLayoutManager= new GridLayoutManager(getActivity(), 2);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
         recyclerView.setLayoutManager(gridLayoutManager);
         //makeRequestWithOkHttp(ConstantsRestApi.ROOT_URL+ConstantsRestApi.URL_GET_RECENT_MEDIA_USER);
 
@@ -120,8 +120,8 @@ public class ProfileFragment extends Fragment {
                     .baseUrl(url)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
-            EndPointApi service2 = retrofit.create(EndPointApi.class);
-            Call<RootObjectProfile> response2 = service.getProfileInfo();
+            EndPointApi service2 = retrofit2.create(EndPointApi.class);
+            Call<RootObjectProfile> response2 = service2.getProfileInfo();
 
             response2.enqueue(new Callback<RootObjectProfile>() {
                 @Override

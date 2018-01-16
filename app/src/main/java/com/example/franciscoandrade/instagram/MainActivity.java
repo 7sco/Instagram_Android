@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentContainer=(FrameLayout)findViewById(R.id.fragmentContainer);
         bottomNavigation=(BottomNavigationView)findViewById(R.id.bottomNavigation);
 
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, profileFragment).commit();
+        bottomNavigation.setSelectedItemId(R.id.profile);
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
