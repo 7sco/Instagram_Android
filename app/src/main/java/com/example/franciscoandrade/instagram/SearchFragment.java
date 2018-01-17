@@ -3,12 +3,9 @@ package com.example.franciscoandrade.instagram;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.franciscoandrade.instagram.restApi.model.Fileread;
 
 
 /**
@@ -33,7 +30,7 @@ public class SearchFragment extends Fragment {
 //        findApiToken();
 //        readFromFile(getActivity());
 
-        Log.d("TOKEN#", "onCreateView: "+ Fileread.getFile());
+        //Log.d("TOKEN#", "onCreateView: "+ Fileread.getFile());
 
         return v;
     }
