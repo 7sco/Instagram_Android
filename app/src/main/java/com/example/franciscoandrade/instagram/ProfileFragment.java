@@ -1,13 +1,13 @@
 package com.example.franciscoandrade.instagram;
-
-
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +18,7 @@ import com.example.franciscoandrade.instagram.jsonAccess.Datum;
 import com.example.franciscoandrade.instagram.jsonAccess.RootObject;
 import com.example.franciscoandrade.instagram.restApi.ConstantsRestApi;
 import com.example.franciscoandrade.instagram.restApi.EndPointApi;
+import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -28,8 +29,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -54,14 +53,14 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
 
         v= inflater.inflate(R.layout.fragment_profile, container, false);
-
         new Peticion().execute();
         timer();
         recyclerView=(RecyclerView)v.findViewById(R.id.recyclerContainer);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
         recyclerView.setLayoutManager(gridLayoutManager);
+        SnapHelper snapHelper2 = new GravitySnapHelper(Gravity.TOP);
+        snapHelper2.attachToRecyclerView(recyclerView);
         //makeRequestWithOkHttp(ConstantsRestApi.ROOT_URL+ConstantsRestApi.URL_GET_RECENT_MEDIA_USER);
-
         return v;
     }
 
@@ -73,7 +72,6 @@ public class ProfileFragment extends Fragment {
             public void run() {
                 // Do something after 5s = 5000ms
 //                Log.d("RESULTS", "AFTER THREAD =====" + cards.size());
-
                 if (cards.size()==0){
                     cardAdapter = new CardAdapter(cards2, getActivity());
                 }
@@ -116,6 +114,7 @@ public class ProfileFragment extends Fragment {
                 }
             });
 
+
             Retrofit retrofit2 = new Retrofit.Builder()
                     .baseUrl(url)
                     .addConverterFactory(GsonConverterFactory.create())
@@ -130,6 +129,7 @@ public class ProfileFragment extends Fragment {
 
                     publishProgress(rootObjectProfile);
                     Log.d("PROFILE==", "onResponse: "+rootObjectProfile.getData().full_name.toString());
+
                 }
 
                 @Override
@@ -137,8 +137,6 @@ public class ProfileFragment extends Fragment {
 
                 }
             });
-
-
 
             return null;
         }

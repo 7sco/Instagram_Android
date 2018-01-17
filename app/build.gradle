@@ -36,5 +36,7 @@ dependencies {
     implementation 'com.squareup.okhttp:okhttp:2.0.0'
     compile 'de.hdodenhof:circleimageview:2.2.0'
 
+    compile 'com.github.rubensousa:gravitysnaphelper:1.3'
+
 
 }
