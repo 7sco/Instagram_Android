@@ -3,4 +3,10 @@
     <color name="colorPrimary">#fff</color>
     <color name="colorPrimaryDark">@android:color/holo_blue_dark</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorWhite">#FFF</color>
+    <color name="colorBlack">#000</color>
+    <color name="editTextHint">#8b8b8b</color>
+    <color name="colorChangeET">#3ab8f1</color>
+    <color name="colorFAB">#00bbff</color>
+    <color name="bakground">#e3e3e3</color>
 </resources>

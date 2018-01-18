@@ -18,8 +18,8 @@ public  class ConstantsRestApi {
     public static final String URL_GET_PROFILE_USER =  KEY_GET_PROFILE_INFORMATION+
             KEY_ACCESS_TOKEN+
             ACCESS_TOKEN;
-
-
+    public static final String ACCESS_TOKEN_UNSPLASH = "TOKEN";
+    public static final String ROOT_URL_UNSPLASH="https://api.unsplash.com";
 
     //Gets profile user info
 //    https://api.instagram.com/v1/users/self/?access_token=285348435.c2d73f8.49da2ae0b0c14a0b9c17c930b5ef116c

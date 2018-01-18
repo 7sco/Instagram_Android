@@ -1,4 +1,5 @@
 package com.example.franciscoandrade.instagram;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -53,7 +54,9 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
 
         v= inflater.inflate(R.layout.fragment_profile, container, false);
+        if(cards.isEmpty()){
         new Peticion().execute();
+        }
         timer();
         recyclerView=(RecyclerView)v.findViewById(R.id.recyclerContainer);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
@@ -107,6 +110,12 @@ public class ProfileFragment extends Fragment {
 
                     Log.d("SIZE1==", "onResponse: "+cards.size());
                     Log.d("SIZE2==", "onResponse: "+cards2.size());
+
+
+
+
+
+
                 }
                 @Override
                 public void onFailure(Call<RootObject> call, Throwable t) {
@@ -130,6 +139,12 @@ public class ProfileFragment extends Fragment {
                     publishProgress(rootObjectProfile);
                     Log.d("PROFILE==", "onResponse: "+rootObjectProfile.getData().full_name.toString());
 
+
+                    //Add use profile image as icon
+//                    BottomNavigationView bottomNavigation=(BottomNavigationView)v.findViewById(R.id.bottomNavigation);
+//                    Menu menu= bottomNavigation.getMenu();
+//                    MenuItem menuItem=menu.findItem(R.id.profile);
+                    //menu.findItem(R.id.profile).setIcon(Picasso.with(getActivity()).load(rootObjectProfile.getData().getProfile_picture().toString()));
                 }
 
                 @Override
