@@ -7,8 +7,24 @@ package com.example.franciscoandrade.instagram.jsonAccess;
 
 public class Location
 {
-    public double latitude ;
-    public double longitude ;
-    public String name ;
-    public int id ;
+    private double latitude ;
+    private double longitude ;
+    private String name ;
+    private int id ;
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getId() {
+        return id;
+    }
 }

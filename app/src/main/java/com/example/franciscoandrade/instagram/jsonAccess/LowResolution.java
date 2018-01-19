@@ -6,9 +6,9 @@ package com.example.franciscoandrade.instagram.jsonAccess;
 
 public class LowResolution
 {
-    public int width;
-    public int height;
-    public String url;
+    private int width;
+    private int height;
+    private String url;
 
     public int getWidth() {
         return width;

@@ -6,14 +6,14 @@ package com.example.franciscoandrade.instagram.jsonAccesProfile;
 
 public class Data {
 
-    public String id ;
-    public String username ;
-    public String profile_picture ;
-    public String full_name ;
-    public String bio ;
-    public String website ;
-    public boolean is_business ;
-    public Counts counts ;
+    private String id ;
+    private String username ;
+    private String profile_picture ;
+    private String full_name ;
+    private String bio ;
+    private String website ;
+    private boolean is_business ;
+    private Counts counts ;
 
 
     public String getId() {

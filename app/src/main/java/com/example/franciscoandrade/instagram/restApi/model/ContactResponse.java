@@ -10,8 +10,7 @@ import java.util.ArrayList;
 
 public class ContactResponse {
 
-    public static ArrayList<Card> contacts;
-
+    private static ArrayList<Card> contacts;
 
     public ArrayList<Card> getContacts() {
         return contacts;

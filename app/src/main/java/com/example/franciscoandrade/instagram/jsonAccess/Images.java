@@ -6,9 +6,9 @@ package com.example.franciscoandrade.instagram.jsonAccess;
 
 public class Images
 {
-    public Thumbnail thumbnail;
-    public LowResolution low_resolution;
-    public StandardResolution standard_resolution;
+    private Thumbnail thumbnail;
+    private LowResolution low_resolution;
+    private StandardResolution standard_resolution;
 
     public Thumbnail getThumbnail() {
         return thumbnail;

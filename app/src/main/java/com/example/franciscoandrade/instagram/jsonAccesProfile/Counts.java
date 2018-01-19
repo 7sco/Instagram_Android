@@ -6,9 +6,9 @@ package com.example.franciscoandrade.instagram.jsonAccesProfile;
 
 public class Counts {
 
-    public int media;
-    public int follows;
-    public int followed_by;
+    private int media;
+    private int follows;
+    private int followed_by;
 
 
     public Counts(int media, int follows, int followed_by) {

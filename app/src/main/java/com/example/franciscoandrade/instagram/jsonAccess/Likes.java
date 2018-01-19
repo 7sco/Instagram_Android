@@ -6,7 +6,7 @@ package com.example.franciscoandrade.instagram.jsonAccess;
 
 public class Likes {
 
-    public int count;
+    private int count;
 
     public int getCount() {
         return count;

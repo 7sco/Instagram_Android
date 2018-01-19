@@ -23,8 +23,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     Context context;
 
 
-    public CardAdapter(ArrayList<Datum> cards, Context context) {
-        this.cards = cards;
+    public CardAdapter( Context context) {
+        cards = new ArrayList<>();
         this.context = context;
     }
 
@@ -61,6 +61,16 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     @Override
     public int getItemCount() {
         return cards.size();
+    }
+
+    public void addImages( ArrayList<Datum> rootObject) {
+
+        for (Datum result:rootObject) {
+            cards.add(result);
+        }
+//        list =new List<Result>(Arrays.asList(rootObject));
+
+        notifyDataSetChanged();
     }
 
     public class CardViewHolder extends RecyclerView.ViewHolder {

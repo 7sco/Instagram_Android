@@ -65,6 +65,8 @@ public class AdapterImages extends RecyclerView.Adapter<AdapterImages.ImagesView
         Log.d("SIZE==", "onBindViewHolder: "+holder.imageView.getWidth());
     }
 
+
+
     @Override
     public int getItemCount() {
         return list.size();
@@ -72,9 +74,12 @@ public class AdapterImages extends RecyclerView.Adapter<AdapterImages.ImagesView
 
     public void addImages(List<Result> rootObject) {
 
-        for (Result result:rootObject) {
-            list.add(result);
-        }
+//        Log.d("ADDIMAGES", "addImages: "+rootObject.get(0).toString());
+
+        list.addAll(rootObject);
+//        for (Result result:rootObject) {
+//            list.add(result);
+//        }
 //        list =new List<Result>(Arrays.asList(rootObject));
 
         notifyDataSetChanged();

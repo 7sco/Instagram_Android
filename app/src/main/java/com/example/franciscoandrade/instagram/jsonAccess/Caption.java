@@ -6,10 +6,10 @@ package com.example.franciscoandrade.instagram.jsonAccess;
 
 public class Caption
 {
-    public String id;
-    public String text;
-    public String created_time;
-    public From from;
+    private String id;
+    private String text;
+    private String created_time;
+    private From from;
 
     public String getId() {
         return id;

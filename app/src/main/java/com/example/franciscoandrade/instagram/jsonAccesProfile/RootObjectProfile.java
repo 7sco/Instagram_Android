@@ -6,7 +6,7 @@ package com.example.franciscoandrade.instagram.jsonAccesProfile;
 
 public class RootObjectProfile {
 
-    public Data data;
+    private Data data;
 
     public RootObjectProfile(Data data) {
         this.data = data;

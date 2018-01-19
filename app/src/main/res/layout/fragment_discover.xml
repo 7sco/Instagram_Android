@@ -5,35 +5,62 @@
     android:orientation="vertical"
     tools:context="com.example.franciscoandrade.instagram.DiscoverFragment">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
 
+        <LinearLayout
+            android:id="@+id/searchTagHolder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
 
-    <ImageView
-        android:id="@+id/randomImage"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        android:src="@mipmap/ic_launcher"
-        />
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_search" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerDiscover"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:theme="@style/EditTextYellow">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/searchHash"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="Search"
+                    android:inputType="text"
+                    android:textSize="20sp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/randomImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerDiscover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
-    </ScrollView>
 
 </LinearLayout>

@@ -6,10 +6,10 @@ package com.example.franciscoandrade.instagram.jsonAccess;
 
 public class From
 {
-    public String id;
-    public String full_name;
-    public String profile_picture;
-    public String username;
+    private String id;
+    private String full_name;
+    private String profile_picture;
+    private String username;
 
     public String getId() {
         return id;

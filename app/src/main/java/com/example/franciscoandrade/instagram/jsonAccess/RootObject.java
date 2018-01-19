@@ -8,7 +8,7 @@ import java.util.List;
 
 public class RootObject {
 
-    public List<Datum> data;
+    private List<Datum> data;
 
     public List<Datum> getData() {
         return data;

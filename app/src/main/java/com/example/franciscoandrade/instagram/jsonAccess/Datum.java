@@ -8,21 +8,21 @@ import java.util.List;
 
 public class Datum
 {
-    public String id ;
-    public User user ;
-    public Images images ;
-    public String created_time ;
-    public Caption caption ;
-    public Boolean user_has_liked ;
-    public Likes likes ;
-    public List<Object> tags ;
-    public String filter ;
-    public Comments comments ;
-    public String type ;
-    public String link ;
-    public Location location ;
-    public Object attribution ;
-    public List<Object> users_in_photo ;
+    private String id ;
+    private User user ;
+    private Images images ;
+    private String created_time ;
+    private Caption caption ;
+    private Boolean user_has_liked ;
+    private Likes likes ;
+    private List<Object> tags ;
+    private String filter ;
+    private Comments comments ;
+    private String type ;
+    private String link ;
+    private Location location ;
+    private Object attribution ;
+    private List<Object> users_in_photo ;
 
     public String getId() {
         return id;
