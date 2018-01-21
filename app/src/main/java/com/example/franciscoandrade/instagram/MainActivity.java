@@ -1,15 +1,17 @@
 package com.example.franciscoandrade.instagram;
 
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
+
+
+import com.example.franciscoandrade.instagram.restApi.model.Fileread;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import java.io.IOException;
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentContainer=(FrameLayout)findViewById(R.id.fragmentContainer);
         bottomNavigation=(BottomNavigationView)findViewById(R.id.bottomNavigation);
 
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, profileFragment).commit();
+        bottomNavigation.setSelectedItemId(R.id.profile);
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -58,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        Fileread fi= new Fileread(this);
+
     }
 
 

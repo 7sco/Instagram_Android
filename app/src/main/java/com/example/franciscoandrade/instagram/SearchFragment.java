@@ -41,6 +41,7 @@ public class SearchFragment extends Fragment {
     othermap1.put("5406911792", "5406911792.f448b8d.a6705f94281f4bda8a8bb4238e7beeca");
     othermap.put("285348435", "285348435.c2d73f8.49da2ae0b0c14a0b9c17c930b5ef116c");
 
+
     hashMapHashMap.put("francisco", othermap);
     hashMapHashMap.put("murad", othermap1);
     //hashMapHashMap.put("francisco2", othermap2);
@@ -78,6 +79,7 @@ public class SearchFragment extends Fragment {
 
     return rootView;
   }
+
 }
 
 

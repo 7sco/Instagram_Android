@@ -6,7 +6,7 @@ import com.example.franciscoandrade.instagram.container.Environment;
  * Created by franciscoandrade on 12/26/17.
  */
 
-public final class ConstantsRestApi {
+public  class ConstantsRestApi {
 
     public static final String VERSION = "/v1/";
     public static final String ROOT_URL = "https://api.instagram.com" + VERSION;
@@ -16,6 +16,7 @@ public final class ConstantsRestApi {
     public static final String URL_GET_RECENT_MEDIA_USER = KEY_GET_INFORMATION_USER + KEY_ACCESS_TOKEN + ACCESS_TOKEN;
     public static final String KEY_GET_PROFILE_INFORMATION = "users/self/";
     public static final String URL_GET_PROFILE_USER = KEY_GET_PROFILE_INFORMATION + KEY_ACCESS_TOKEN + ACCESS_TOKEN;
+
 }
 
 

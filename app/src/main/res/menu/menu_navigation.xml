@@ -2,11 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="Search" android:id="@+id/search"
         android:enabled="true"
+
         android:icon="@drawable/ic_search"
         />
-    <item android:title="Discover" android:id="@+id/discover"
+    <item android:title="Popular" android:id="@+id/discover"
         android:enabled="true"
-        android:icon="@drawable/me"
+        android:icon="@drawable/popular"
         />
     <item android:title="Me" android:id="@+id/profile"
         android:enabled="true"
