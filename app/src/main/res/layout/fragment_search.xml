@@ -1,15 +1,38 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.franciscoandrade.instagram.SearchFragment">
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:padding="16dp"
+  android:orientation="vertical"
+  tools:context="com.example.franciscoandrade.instagram.SearchFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="SEARCH FEATURE FRAGMENT"
-        android:textSize="40sp"
-        android:gravity="center"
-        android:textAlignment="center"/>
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="16dp"
+      android:orientation="vertical">
 
+        <EditText
+          android:id="@+id/edit_text_search"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:gravity="center"
+          android:hint="@string/type_user_name"
+          android:textAlignment="center"
+          android:textSize="22sp"/>
+
+        <Button
+          android:id="@+id/button_search"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/search"/>
+
+    </LinearLayout>
+    <FrameLayout
+      android:id="@+id/fragmentSearchContainer"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+    </FrameLayout>
 </LinearLayout>

@@ -163,6 +163,4 @@ public class ProfileFragment extends Fragment {
 //            Log.d("END==", "onPostExecute: ");
         }
     }
-
-
 }

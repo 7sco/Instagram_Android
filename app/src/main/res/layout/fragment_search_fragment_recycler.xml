@@ -1,0 +1,107 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+
+  android:paddingTop="15dp"
+  tools:context="com.example.franciscoandrade.instagram.ProfileFragment">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:paddingTop="15dp"
+      android:orientation="vertical">
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_gravity="center"
+          android:orientation="horizontal"
+          android:layout_height="160dp">
+
+            <LinearLayout
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:layout_weight="0.7">
+                <de.hdodenhof.circleimageview.CircleImageView
+                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                  android:id="@+id/searchprofile_image"
+                  android:layout_width="110dp"
+                  android:layout_height="110dp"
+                  android:src="@drawable/profile"
+                  app:civ_border_width="0dp"
+                  android:gravity="center"
+                  app:civ_border_color="#FF000000"/>
+                <TextView
+                  android:id="@+id/searchprofileName"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:textAlignment="center"
+                  android:textSize="22sp"
+                  android:text="@string/name"/>
+            </LinearLayout>
+            <LinearLayout
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:layout_weight="1">
+
+                <TextView
+                  android:layout_width="match_parent"
+                  android:text="@string/post"
+                  android:textSize="20sp"
+                  android:textAlignment="center"
+                  android:layout_height="wrap_content" />
+
+                <TextView
+                  android:id="@+id/searchmediaTV"
+                  android:layout_width="match_parent"
+                  android:text="@string/_100"
+                  android:textSize="20sp"
+                  android:textAlignment="center"
+                  android:layout_height="wrap_content" />
+
+                <TextView
+                  android:layout_width="match_parent"
+                  android:text="@string/followers"
+                  android:textSize="20sp"
+                  android:textAlignment="center"
+                  android:layout_height="wrap_content" />
+
+                <TextView
+                  android:id="@+id/searchfollowed_byTV"
+                  android:layout_width="match_parent"
+                  android:text="@string/_100"
+                  android:textSize="20sp"
+                  android:textAlignment="center"
+                  android:layout_height="wrap_content" />
+
+                <TextView
+                  android:layout_width="match_parent"
+                  android:text="following"
+                  android:textAlignment="center"
+                  android:textSize="20sp"
+                  android:layout_height="wrap_content" />
+                <TextView
+                  android:id="@+id/searchfollowsTV"
+                  android:layout_width="match_parent"
+                  android:text="@string/_100"
+                  android:textSize="20sp"
+                  android:textAlignment="center"
+                  android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+          android:id="@+id/recycler_view_search"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginTop="0dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
