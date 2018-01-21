@@ -24,6 +24,7 @@ public class SearchFragment extends Fragment {
   HashMap<String, HashMap<String, String>> hashMapHashMap;
   HashMap<String, String> othermap;
   HashMap<String, String> othermap1;
+  HashMap<String, String> othermap2;
 
   String userID;
   String token;
@@ -37,13 +38,17 @@ public class SearchFragment extends Fragment {
     hashMapHashMap = new HashMap<>();
     othermap = new HashMap<>();
     othermap1 = new HashMap<>();
+    othermap2 = new HashMap<>();
 
+    othermap2.put("315656640", "315656640.2a23084.a3bc42e3d993454ba0659379e6df1e13");
     othermap1.put("5406911792", "5406911792.f448b8d.a6705f94281f4bda8a8bb4238e7beeca");
     othermap.put("285348435", "285348435.c2d73f8.49da2ae0b0c14a0b9c17c930b5ef116c");
 
 
     hashMapHashMap.put("francisco", othermap);
     hashMapHashMap.put("murad", othermap1);
+    hashMapHashMap.put("amy", othermap2);
+
     //hashMapHashMap.put("francisco2", othermap2);
 
     buttonSearch = (Button) rootView.findViewById(R.id.button_search);
@@ -54,9 +59,7 @@ public class SearchFragment extends Fragment {
         SearchFragmentRecycler fragment = new SearchFragmentRecycler();
 
         for (Map.Entry<String, HashMap<String, String>> mapEntry : hashMapHashMap.entrySet()) {
-          if (editText.getText()
-            .toString()
-            .equalsIgnoreCase(mapEntry.getKey())) {
+          if (editText.getText().toString().equalsIgnoreCase(mapEntry.getKey())) {
             Map<String, String> map = mapEntry.getValue();
             for (Map.Entry<String, String> info : map.entrySet()) {
               userID = info.getKey();
