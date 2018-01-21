@@ -22,6 +22,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     ArrayList<Datum> cards;
     Context context;
 
+
     public CardAdapter(ArrayList<Datum> cards, Context context) {
         this.cards = cards;
         this.context = context;
@@ -37,7 +38,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     @Override
     public void onBindViewHolder(CardViewHolder holder, int position) {
             String url= cards.get(position).getImages().getStandard_resolution().getUrl();
-
+        Log.d("VIEWHOLDER", "onBindViewHolder: "+cards.get(position).toString());
 
             if (cards.get(position).getCaption() == null){
 
@@ -52,6 +53,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
             Picasso.with(context).load(url).into(holder.imageView);
 
 
+
+//            TODO: add feature when click in image you get to seee details & comments in a new activity
+
     }
 
     @Override
@@ -65,13 +69,13 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         TextView textView;
 
 
+
+
         public CardViewHolder(View itemView) {
             super(itemView);
 
             imageView= (ImageView)itemView.findViewById(R.id.imageView);
             textView= (TextView) itemView.findViewById(R.id.textView);
-
-
         }
     }
 }
