@@ -1,6 +1,7 @@
 package com.example.franciscoandrade.instagram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -36,7 +37,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     }
 
     @Override
-    public void onBindViewHolder(CardViewHolder holder, int position) {
+    public void onBindViewHolder(CardViewHolder holder, final int position) {
             String url= cards.get(position).getImages().getStandard_resolution().getUrl();
         Log.d("VIEWHOLDER", "onBindViewHolder: "+cards.get(position).toString());
 
@@ -53,6 +54,16 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
             Picasso.with(context).load(url).into(holder.imageView);
 
 
+            holder.imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent= new Intent(context, ImageInfoActivity.class);
+                    intent.putExtra("imageUrl", cards.get(position).getImages().getStandard_resolution().getUrl().toString());
+                    intent.putExtra("caption", cards.get(position).getCaption().getText().toString());
+                    context.startActivity(intent);
+                }
+            });
 
 //            TODO: add feature when click in image you get to seee details & comments in a new activity
 

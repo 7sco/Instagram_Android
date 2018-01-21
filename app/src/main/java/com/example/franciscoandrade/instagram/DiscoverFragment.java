@@ -1,4 +1,5 @@
 package com.example.franciscoandrade.instagram;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -19,6 +20,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.example.franciscoandrade.instagram.UnsplashPOJO.Result;
 import com.example.franciscoandrade.instagram.UnsplashPOJO.RootObjectUnsplash;
@@ -53,6 +55,10 @@ public class DiscoverFragment extends Fragment {
     List<Result> newList = new ArrayList<>();
     ImageView randomImage;
 
+
+    private int progressStatus = 0;
+    ProgressBar progrssDiscovery;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,6 +67,7 @@ public class DiscoverFragment extends Fragment {
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerDiscover);
         searchTagHolder = (LinearLayout) v.findViewById(R.id.searchTagHolder);
         searchHash = (TextInputEditText) v.findViewById(R.id.searchHash);
+        progrssDiscovery = (ProgressBar) v.findViewById(R.id.progrssDiscovery);
         adapterImages = new AdapterImages(getActivity());
         recyclerView.setAdapter(adapterImages);
         recyclerView.setHasFixedSize(true);
@@ -118,6 +125,8 @@ public class DiscoverFragment extends Fragment {
                         aptoParaCargar = false;
                         offset = 1;
                         newList.clear();
+                        adapterImages.notifyDataSetChanged();
+
                         hideSoftKeyboard(getActivity());
                         searchTagHolder.setVisibility(View.GONE);
                         obtenerDatos(offset, false);
@@ -147,23 +156,37 @@ public class DiscoverFragment extends Fragment {
 
         EndPointApi service = retrofit.create(EndPointApi.class);
         Call<RootObjectUnsplash> response = service.getPopularMedia(offset, hash, 15, ConstantsRestApi.ACCESS_TOKEN_UNSPLASH);
+
+        progrssDiscovery.setVisibility(View.VISIBLE);
+
         response.enqueue(new Callback<RootObjectUnsplash>() {
             @Override
             public void onResponse(Call<RootObjectUnsplash> call, Response<RootObjectUnsplash> response) {
                 Log.d("RESPONDED==", "onResponse: ");
                 aptoParaCargar = true;
+                if (!newWorld) {
+                    newList.clear();
+                    adapterImages = new AdapterImages(getActivity());
+                    adapterImages.notifyDataSetChanged();
+                    recyclerView.setAdapter(adapterImages);
+                }
+
                 if (response.isSuccessful()) {
                     Log.d("Francisco==", "onResponse: " + response.body().getResults().toString());
                     //Check the clear is working
-                    List<Result> newList = response.body().getResults();
+//                    List<Result> newList = response.body().getResults();
+                    newList = response.body().getResults();
                     adapterImages.addImages(newList);
                 }
                 Log.d("OFFSET", "onResponse: " + offset);
+                progrssDiscovery.setVisibility(View.INVISIBLE);
+
             }
 
             @Override
             public void onFailure(Call<RootObjectUnsplash> call, Throwable t) {
-                //aptoParaCargar = true;
+                aptoParaCargar = true;
+                progrssDiscovery.setVisibility(View.INVISIBLE);
             }
         });
 

@@ -1,6 +1,7 @@
 package com.example.franciscoandrade.instagram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -46,18 +47,16 @@ public class AdapterImages extends RecyclerView.Adapter<AdapterImages.ImagesView
             @Override
             public void onClick(View v) {
 
-//                Intent intent= new Intent(context, CollapsingActivity.class);
-//                intent.putExtra("imageUrl", list.get(position).getUrls().getRegular());
-//                intent.putExtra("imageColor", list.get(position).getColor());
-//                intent.putExtra("imageHeight", list.get(position).getHeight());
-//                intent.putExtra("imageLikes", list.get(position).getLikes());
-//                intent.putExtra("imageWidth", list.get(position).getWidth());
-//                intent.putExtra("imageUserName", list.get(position).getUser().getUsername());
-//                intent.putExtra("imageUserTwiter", list.get(position).getUser().getTwitter_username());
-//                context.startActivity(intent);
+                Intent intent= new Intent(context, RandomImageInfoActivity.class);
+                intent.putExtra("imageUrl", list.get(position).getUrls().getRegular());
+                intent.putExtra("imageColor", list.get(position).getColor());
+                intent.putExtra("imageHeight", list.get(position).getHeight());
+                intent.putExtra("imageLikes", list.get(position).getLikes());
+                intent.putExtra("imageWidth", list.get(position).getWidth());
+                intent.putExtra("imageUserName", list.get(position).getUser().getUsername());
+                //intent.putExtra("imageUserTwiter", list.get(position).getUser().ge());
+                context.startActivity(intent);
 
-//                    Intent intent= new Intent(context, CollapsingActivity.class);
-//                    context.startActivity(intent);
 
             }
         });

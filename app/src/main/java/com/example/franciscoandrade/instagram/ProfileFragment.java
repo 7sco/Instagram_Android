@@ -95,6 +95,9 @@ public class ProfileFragment extends Fragment {
                     .build();
             EndPointApi service = retrofit.create(EndPointApi.class);
             Call<RootObject> response = service.getRecentMedia();
+
+
+
             response.enqueue(new Callback<RootObject>() {
                 @Override
                 public void onResponse(Call<RootObject> call, Response<RootObject> response) {
@@ -159,6 +162,7 @@ public class ProfileFragment extends Fragment {
 
         @Override
         protected void onProgressUpdate(RootObjectProfile... values) {
+
 
         }
 

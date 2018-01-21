@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 if (transaction != null) {
                     transaction.commit();
                     //If we want to add fragments to stack
-                    //transaction.addToBackStack(null).commit();
+//                    transaction.addToBackStack(null).commit();
                 }
                 return true;
             }
