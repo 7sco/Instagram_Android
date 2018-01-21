@@ -44,7 +44,7 @@
                     android:background="@null"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
-                    android:hint="Search"
+                    android:hint="Tag Search"
                     android:inputType="text"
                     android:textSize="20sp" />
 

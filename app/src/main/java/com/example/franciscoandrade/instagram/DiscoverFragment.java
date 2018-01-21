@@ -24,7 +24,6 @@ import android.widget.ProgressBar;
 
 import com.example.franciscoandrade.instagram.UnsplashPOJO.Result;
 import com.example.franciscoandrade.instagram.UnsplashPOJO.RootObjectUnsplash;
-import com.example.franciscoandrade.instagram.pojorandomimage.RootObjectRandom;
 import com.example.franciscoandrade.instagram.restApi.ConstantsRestApi;
 import com.example.franciscoandrade.instagram.restApi.EndPointApi;
 import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
@@ -175,6 +174,14 @@ public class DiscoverFragment extends Fragment {
                     Log.d("Francisco==", "onResponse: " + response.body().getResults().toString());
                     //Check the clear is working
 //                    List<Result> newList = response.body().getResults();
+
+                        if (response.body().getResults().get(0)!=null){
+                            Picasso.with(getActivity()).load(response.body().getResults().get(0).getUrls().getRegular().toString())
+                                .resize(400, 400)
+                                .centerInside()
+                                .into(randomImage);
+                        }
+
                     newList = response.body().getResults();
                     adapterImages.addImages(newList);
                 }
@@ -190,30 +197,30 @@ public class DiscoverFragment extends Fragment {
             }
         });
 
-        if (offset == 1 || offset % 10 == 0) {
-            EndPointApi service2 = retrofit.create(EndPointApi.class);
-            Call<RootObjectRandom> response2 = service2.getRandomMedia(ConstantsRestApi.ACCESS_TOKEN_UNSPLASH);
-            response2.enqueue(new Callback<RootObjectRandom>() {
-                @Override
-                public void onResponse(Call<RootObjectRandom> call, Response<RootObjectRandom> response) {
-                    Log.d("IMAGE LINK", "onResponse: " + response.body());
-                    if (response.body() != null) {
-                        String urlRandomImage = response.body().getUrls().getRegular().toString();
-                        Picasso.with(getActivity()).load(urlRandomImage)
-                                .resize(400, 400)
-                                .centerInside()
-                                .into(randomImage);
-                    } else {
-                        randomImage.setImageResource(R.drawable.cfourq);
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<RootObjectRandom> call, Throwable t) {
-
-                }
-            });
-        }
+//        if (offset == 1 || offset % 10 == 0) {
+//            EndPointApi service2 = retrofit.create(EndPointApi.class);
+//            Call<RootObjectRandom> response2 = service2.getRandomMedia(ConstantsRestApi.ACCESS_TOKEN_UNSPLASH);
+//            response2.enqueue(new Callback<RootObjectRandom>() {
+//                @Override
+//                public void onResponse(Call<RootObjectRandom> call, Response<RootObjectRandom> response) {
+//                    Log.d("IMAGE LINK", "onResponse: " + response.body());
+//                    if (response.body() != null) {
+//                        String urlRandomImage = response.body().getUrls().getRegular().toString();
+//                        Picasso.with(getActivity()).load(urlRandomImage)
+//                                .resize(400, 400)
+//                                .centerInside()
+//                                .into(randomImage);
+//                    } else {
+//                        randomImage.setImageResource(R.drawable.cfourq);
+//                    }
+//                }
+//
+//                @Override
+//                public void onFailure(Call<RootObjectRandom> call, Throwable t) {
+//
+//                }
+//            });
+        //}
     }
 
     @Override

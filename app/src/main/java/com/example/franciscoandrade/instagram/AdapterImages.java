@@ -37,7 +37,9 @@ public class AdapterImages extends RecyclerView.Adapter<AdapterImages.ImagesView
 
     @Override
     public void onBindViewHolder(ImagesViewHolder holder, final int position) {
-        String url=list.get(position).getUrls().getRegular().toString();
+        String url=list.get(position+1).getUrls().getRegular().toString();
+
+
         Picasso.with(context).load(url)
                 .resize(400, 400)
                 .centerCrop()

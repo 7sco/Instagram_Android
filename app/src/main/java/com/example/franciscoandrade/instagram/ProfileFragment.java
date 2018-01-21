@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.franciscoandrade.instagram.jsonAccesProfile.RootObjectProfile;
@@ -43,6 +44,7 @@ public class ProfileFragment extends Fragment {
     String name, imageUrl, postNumber, followersNumber, followingNumber;
     CircleImageView profile_image;
     TextView profileName, mediaTV, followed_byTV, followsTV;
+    ProgressBar progrssDiscovery;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,6 +55,8 @@ public class ProfileFragment extends Fragment {
         mediaTV = (TextView) v.findViewById(R.id.mediaTV);
         followed_byTV = (TextView) v.findViewById(R.id.followed_byTV);
         followsTV = (TextView) v.findViewById(R.id.followsTV);
+        progrssDiscovery = (ProgressBar) v.findViewById(R.id.progrssDiscovery);
+
         new Peticion().execute();
         Log.d("IMAGELINK=", "onCreateView: " + imageUrl);
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerContainer);
@@ -97,6 +101,7 @@ public class ProfileFragment extends Fragment {
             Call<RootObject> response = service.getRecentMedia();
 
 
+            progrssDiscovery.setVisibility(View.VISIBLE);
 
             response.enqueue(new Callback<RootObject>() {
                 @Override
@@ -112,11 +117,15 @@ public class ProfileFragment extends Fragment {
                     cardAdapter.addImages(cards2);
                     Log.d("SIZE1==", "onResponse: " + cards.size());
                     Log.d("SIZE2==", "onResponse: " + cards2.size());
+                    progrssDiscovery.setVisibility(View.INVISIBLE);
+
                 }
 
                 @Override
                 public void onFailure(Call<RootObject> call, Throwable t) {
                     Log.d("FAIL==", "onFailure: ");
+                    progrssDiscovery.setVisibility(View.INVISIBLE);
+
                 }
             });
 
@@ -126,6 +135,8 @@ public class ProfileFragment extends Fragment {
                     .build();
             EndPointApi service2 = retrofit2.create(EndPointApi.class);
             Call<RootObjectProfile> response2 = service2.getProfileInfo();
+            progrssDiscovery.setVisibility(View.VISIBLE);
+
             response2.enqueue(new Callback<RootObjectProfile>() {
                 @Override
                 public void onResponse(Call<RootObjectProfile> call, Response<RootObjectProfile> response) {
@@ -145,6 +156,8 @@ public class ProfileFragment extends Fragment {
                     followed_byTV.setText(followersNumber);
                     followsTV.setText(followingNumber);
                     mediaTV.setText(postNumber);
+                    progrssDiscovery.setVisibility(View.INVISIBLE);
+
                     //Add use profile image as icon
 //                    BottomNavigationView bottomNavigation=(BottomNavigationView)v.findViewById(R.id.bottomNavigation);
 //                    Menu menu= bottomNavigation.getMenu();
@@ -154,6 +167,7 @@ public class ProfileFragment extends Fragment {
 
                 @Override
                 public void onFailure(Call<RootObjectProfile> call, Throwable t) {
+                    progrssDiscovery.setVisibility(View.INVISIBLE);
 
                 }
             });

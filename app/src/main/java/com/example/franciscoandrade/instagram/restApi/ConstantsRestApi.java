@@ -8,7 +8,7 @@ public class ConstantsRestApi {
 
     public static final String VERSION = "/v1/";
     public static final String ROOT_URL = "https://api.instagram.com" + VERSION;
-    public static final String ACCESS_TOKEN = "TOKEN";
+    public static final String ACCESS_TOKEN = "285348435.c2d73f8.49da2ae0b0c14a0b9c17c930b5ef116c";
     public static final String KEY_ACCESS_TOKEN = "?access_token=";
     public static final String KEY_GET_INFORMATION_USER = "users/self/media/recent/";
     public static final String KEY_SEARCH_USER = "users/search";
@@ -20,7 +20,7 @@ public class ConstantsRestApi {
             KEY_ACCESS_TOKEN +
             ACCESS_TOKEN;
     public static final String KEY_GET_PROFILE_SEARCH = ROOT_URL + KEY_SEARCH_USER;
-    public static final String ACCESS_TOKEN_UNSPLASH = "TOKEN";
+    public static final String ACCESS_TOKEN_UNSPLASH = "Bearer 3f1558d3c2d0ac4f646bc3ee3a744f6de761e20f3bab18266e3dc21d065c44b1";
     public static final String ROOT_URL_UNSPLASH = "https://api.unsplash.com";
 
     //Search  User
