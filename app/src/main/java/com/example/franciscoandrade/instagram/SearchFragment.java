@@ -29,12 +29,10 @@ public class SearchFragment extends Fragment {
   String token;
 
   public SearchFragment() {
-    // Required empty public constructor
   }
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    // Inflate the layout for this fragment
     rootView = inflater.inflate(R.layout.fragment_search, container, false);
     hashMapHashMap = new HashMap<>();
     othermap = new HashMap<>();
@@ -44,7 +42,8 @@ public class SearchFragment extends Fragment {
     othermap.put("285348435", "285348435.c2d73f8.49da2ae0b0c14a0b9c17c930b5ef116c");
 
     hashMapHashMap.put("francisco", othermap);
-    hashMapHashMap.put("mrahimov1", othermap1);
+    hashMapHashMap.put("murad", othermap1);
+    //hashMapHashMap.put("francisco2", othermap2);
 
     buttonSearch = (Button) rootView.findViewById(R.id.button_search);
     editText = rootView.findViewById(R.id.edit_text_search);

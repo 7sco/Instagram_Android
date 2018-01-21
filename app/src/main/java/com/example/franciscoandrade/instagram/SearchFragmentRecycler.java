@@ -90,11 +90,9 @@ public class SearchFragmentRecycler extends Fragment {
   }
 
   public void internetTask2() {
-    //String url = ConstantsRestApi.ROOT_URL;
     Retrofit retrofit2 = new Retrofit.Builder().baseUrl("https://api.instagram.com/")
       .addConverterFactory(GsonConverterFactory.create())
       .build();
-    //Instagram service2 = retrofit2.create(Instagram.class);
     usersearchAPI usersearchAPI = retrofit2.create(usersearchAPI.class);
 
     Call<RootObjectProfile> response2 = usersearchAPI.searchProfile(userid, token);
