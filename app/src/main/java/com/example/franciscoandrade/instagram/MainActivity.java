@@ -1,45 +1,18 @@
 package com.example.franciscoandrade.instagram;
 
-import android.os.AsyncTask;
-import android.os.Handler;
+
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-import android.widget.TextView;
-
-import com.example.franciscoandrade.instagram.jsonAccesProfile.RootObjectProfile;
-import com.example.franciscoandrade.instagram.jsonAccess.Datum;
-import com.example.franciscoandrade.instagram.jsonAccess.RootObject;
-import com.example.franciscoandrade.instagram.restApi.ConstantsRestApi;
-import com.example.franciscoandrade.instagram.restApi.EndPointApi;
-import com.example.franciscoandrade.instagram.restApi.model.ContactResponse;
+import android.widget.LinearLayout;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.squareup.picasso.Picasso;
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
     ProfileFragment profileFragment= new ProfileFragment();
     SearchFragment searchFragment= new SearchFragment();
     DiscoverFragment discoverFragment= new DiscoverFragment();
+    SearchFragmentRecycler searchFragmentRecycler = new SearchFragmentRecycler();
+    //TODO added by Murad
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

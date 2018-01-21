@@ -1,15 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.design.widget.CoordinatorLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:orientation="vertical">
+  tools:context="com.example.franciscoandrade.instagram.MainActivity">
 
-    <TextView
-      android:id="@+id/textview_username"
+    <include layout="@layout/actionbar_toolbar"/>
+    <FrameLayout
+      android:id="@+id/fragmentContainer"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:textSize="22sp"/>
+      android:layout_height="match_parent"
+      android:layout_marginBottom="56dp"
+      android:layout_marginTop="?attr/actionBarSize"
+    >
 
 
-</LinearLayout>
+    </FrameLayout>
+
+    <FrameLayout
+      android:id="@+id/bottom"
+      android:layout_width="match_parent"
+      android:layout_gravity="bottom"
+      android:layout_height="wrap_content">
+        <View
+          android:layout_width="match_parent"
+          android:layout_height="4dp"
+          android:layout_gravity="top"
+          android:background="@drawable/shadow"
+        />
+
+        <android.support.design.widget.BottomNavigationView
+          android:id="@+id/bottomNavigation"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:menu="@menu/menu_navigation"
+          app:itemIconTint="@color/bnv_tab_item_foreground"
+          app:itemTextColor="@color/bnv_tab_item_foreground"
+
+        />
+    </FrameLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

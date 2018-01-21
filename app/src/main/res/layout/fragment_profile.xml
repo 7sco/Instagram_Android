@@ -38,8 +38,8 @@ android:orientation="vertical">
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:textSize="30sp"
-                android:text="Name"/>
+                android:textSize="22sp"
+                android:text="@string/name"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -49,7 +49,7 @@ android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
-                android:text="post"
+                android:text="@string/post"
                 android:textSize="20sp"
                 android:textAlignment="center"
                 android:layout_height="wrap_content" />
@@ -57,14 +57,14 @@ android:orientation="vertical">
             <TextView
                 android:id="@+id/mediaTV"
                 android:layout_width="match_parent"
-                android:text="100"
+                android:text="@string/_100"
                 android:textSize="20sp"
                 android:textAlignment="center"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:text="followers"
+                android:text="@string/followers"
                 android:textSize="20sp"
                 android:textAlignment="center"
                 android:layout_height="wrap_content" />
@@ -72,21 +72,21 @@ android:orientation="vertical">
             <TextView
                 android:id="@+id/followed_byTV"
                 android:layout_width="match_parent"
-                android:text="100"
+                android:text="@string/_100"
                 android:textSize="20sp"
                 android:textAlignment="center"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:text="following"
+                android:text="@string/following"
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/followsTV"
                 android:layout_width="match_parent"
-                android:text="100"
+                android:text="@string/_100"
                 android:textSize="20sp"
                 android:textAlignment="center"
                 android:layout_height="wrap_content" />
