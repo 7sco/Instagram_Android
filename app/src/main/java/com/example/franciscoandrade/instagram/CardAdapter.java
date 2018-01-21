@@ -23,8 +23,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     Context context;
 
 
-    public CardAdapter(ArrayList<Datum> cards, Context context) {
-        this.cards = cards;
+    public CardAdapter( Context context) {
+        cards = new ArrayList<>();
         this.context = context;
     }
 
@@ -36,23 +36,33 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     }
 
     @Override
-    public void onBindViewHolder(CardViewHolder holder, int position) {
-            String url= cards.get(position).getImages().getStandard_resolution().getUrl();
+    public void onBindViewHolder(CardViewHolder holder, final int position) {
+        String url= cards.get(position).getImages().getStandard_resolution().getUrl();
         Log.d("VIEWHOLDER", "onBindViewHolder: "+cards.get(position).toString());
 
-            if (cards.get(position).getCaption() == null){
+        if (cards.get(position).getCaption() == null){
 
-                 holder.textView.setText("No Caption");
+            holder.textView.setText("No Caption");
 
+        }
+        else {
+            holder.textView.setText(cards.get(position).getCaption().getText());
+        }
+
+
+        Picasso.with(context).load(url).into(holder.imageView);
+
+
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                Intent intent= new Intent(context, ImageInfoActivity.class);
+//                intent.putExtra("imageUrl", cards.get(position).getImages().getStandard_resolution().getUrl().toString());
+//                intent.putExtra("caption", cards.get(position).getCaption().getText().toString());
+//                context.startActivity(intent);
             }
-            else {
-                holder.textView.setText(cards.get(position).getCaption().getText());
-            }
-
-
-            Picasso.with(context).load(url).into(holder.imageView);
-
-
+        });
 
 //            TODO: add feature when click in image you get to seee details & comments in a new activity
 
@@ -61,6 +71,16 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     @Override
     public int getItemCount() {
         return cards.size();
+    }
+
+    public void addImages( ArrayList<Datum> rootObject) {
+
+        for (Datum result:rootObject) {
+            cards.add(result);
+        }
+//        list =new List<Result>(Arrays.asList(rootObject));
+
+        notifyDataSetChanged();
     }
 
     public class CardViewHolder extends RecyclerView.ViewHolder {

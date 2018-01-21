@@ -12,14 +12,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import com.example.franciscoandrade.instagram.container.SearchAdapter;
 import com.example.franciscoandrade.instagram.jsonAccesProfile.RootObjectProfile;
 import com.example.franciscoandrade.instagram.jsonAccess.Datum;
 import com.example.franciscoandrade.instagram.jsonAccess.RootObject;
 import com.example.franciscoandrade.instagram.restApi.usersearchAPI;
 import com.squareup.picasso.Picasso;
-import de.hdodenhof.circleimageview.CircleImageView;
+
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,6 +43,7 @@ public class SearchFragmentRecycler extends Fragment {
   ArrayList<Datum> instagramList = new ArrayList<>();
   String userid;
   String token;
+
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

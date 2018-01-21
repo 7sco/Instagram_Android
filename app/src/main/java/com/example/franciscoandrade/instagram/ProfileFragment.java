@@ -1,4 +1,5 @@
 package com.example.franciscoandrade.instagram;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,6 +12,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.franciscoandrade.instagram.jsonAccesProfile.RootObjectProfile;
@@ -29,33 +31,38 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ProfileFragment extends Fragment {
 
     View v;
-
     RecyclerView recyclerView;
     CardAdapter cardAdapter;
-    ArrayList<Datum> cards = new ArrayList<>();
     ArrayList<Datum> cards2 = new ArrayList<>();
-
-
-    public ProfileFragment() {
-        // Required empty public constructor
-    }
+    String name, imageUrl, postNumber, followersNumber, followingNumber;
+    CircleImageView profile_image;
+    TextView profileName, mediaTV, followed_byTV, followsTV;
+    ProgressBar progrssDiscovery;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
-        v= inflater.inflate(R.layout.fragment_profile, container, false);
+        v = inflater.inflate(R.layout.fragment_profile, container, false);
+        profile_image = (CircleImageView) v.findViewById(R.id.profile_image);
+        profileName = (TextView) v.findViewById(R.id.profileName);
+        mediaTV = (TextView) v.findViewById(R.id.mediaTV);
+        followed_byTV = (TextView) v.findViewById(R.id.followed_byTV);
+        followsTV = (TextView) v.findViewById(R.id.followsTV);
+        progrssDiscovery = (ProgressBar) v.findViewById(R.id.progrssDiscovery);
         new Peticion().execute();
-        timer();
-        recyclerView=(RecyclerView)v.findViewById(R.id.recyclerContainer);
+        Log.d("IMAGELINK=", "onCreateView: " + imageUrl);
+        recyclerView = (RecyclerView) v.findViewById(R.id.recyclerContainer);
+        cardAdapter = new CardAdapter(getActivity());
+        recyclerView.setAdapter(cardAdapter);
+        recyclerView.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
         recyclerView.setLayoutManager(gridLayoutManager);
         SnapHelper snapHelper2 = new GravitySnapHelper(Gravity.TOP);
@@ -64,7 +71,6 @@ public class ProfileFragment extends Fragment {
         return v;
     }
 
-
     private void timer() {
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -72,48 +78,57 @@ public class ProfileFragment extends Fragment {
             public void run() {
                 // Do something after 5s = 5000ms
 //                Log.d("RESULTS", "AFTER THREAD =====" + cards.size());
-                if (cards.size()==0){
-                    cardAdapter = new CardAdapter(cards2, getActivity());
-                }
-                else {
-                    cardAdapter = new CardAdapter(cards, getActivity());
-                }
-                recyclerView.setAdapter(cardAdapter);
+//                if (cards.size()==0){
+//                    cardAdapter = new CardAdapter(cards2, getActivity());
+//                }
+//                else {
+//                    cardAdapter = new CardAdapter(cards, getActivity());
+//                }
+//                recyclerView.setAdapter(cardAdapter);
             }
-        }, 2000);
+        }, 1000);
     }
 
     public class Peticion extends AsyncTask<Void, RootObjectProfile, Void> {
-
         @Override
         protected Void doInBackground(Void... voids) {
-            String url= ConstantsRestApi.ROOT_URL;
+            String url = ConstantsRestApi.ROOT_URL;
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(url)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
             EndPointApi service = retrofit.create(EndPointApi.class);
             Call<RootObject> response = service.getRecentMedia();
+
+
+            progrssDiscovery.setVisibility(View.VISIBLE);
+
             response.enqueue(new Callback<RootObject>() {
                 @Override
                 public void onResponse(Call<RootObject> call, Response<RootObject> response) {
-                    Log.d("RESULT==", "onResponse: "+response.body().getData());
+                   // Log.d("RESULT==", "onResponse: " + response.body().getData().get(0).getUser().getFull_name());
                     //Log.d("RESPONSEE==", "onResponse: ");
-                    for (int i=0; i<response.body().getData().size(); i++){
+                    ArrayList<Datum> cards = new ArrayList<>();
+                    for (int i = 0; i < response.body().getData().size(); i++) {
                         cards.add(response.body().getData().get(i));
                         //Log.d("RESULT==", "onResponse: "+cards.get(i).toString());
                     }
-                    cards2= cards;
+                    cards2 = cards;
+                    cardAdapter.addImages(cards2);
+                    Log.d("SIZE1==", "onResponse: " + cards.size());
+                    Log.d("SIZE2==", "onResponse: " + cards2.size());
 
-                    Log.d("SIZE1==", "onResponse: "+cards.size());
-                    Log.d("SIZE2==", "onResponse: "+cards2.size());
+                    progrssDiscovery.setVisibility(View.INVISIBLE);
+
                 }
+
                 @Override
                 public void onFailure(Call<RootObject> call, Throwable t) {
                     Log.d("FAIL==", "onFailure: ");
+                    progrssDiscovery.setVisibility(View.INVISIBLE);
+
                 }
             });
-
 
             Retrofit retrofit2 = new Retrofit.Builder()
                     .baseUrl(url)
@@ -121,15 +136,32 @@ public class ProfileFragment extends Fragment {
                     .build();
             EndPointApi service2 = retrofit2.create(EndPointApi.class);
             Call<RootObjectProfile> response2 = service2.getProfileInfo();
-
             response2.enqueue(new Callback<RootObjectProfile>() {
                 @Override
                 public void onResponse(Call<RootObjectProfile> call, Response<RootObjectProfile> response) {
-                    RootObjectProfile rootObjectProfile= response.body();
+                    RootObjectProfile rootObjectProfile = response.body();
+                    //publishProgress(rootObjectProfile);
+                    // Log.d("PROFILE==", "onResponse: "+rootObjectProfile.getData().full_name.toString());
+                    imageUrl = rootObjectProfile.getData().getProfile_picture();
+                    name = String.valueOf(rootObjectProfile.getData().getFull_name());
+                    postNumber = String.valueOf(rootObjectProfile.getData().getCounts().getMedia());
+                    followersNumber = String.valueOf(rootObjectProfile.getData().getCounts().getFollowed_by());
+                    followingNumber = String.valueOf(rootObjectProfile.getData().getCounts().getFollows());
 
-                    publishProgress(rootObjectProfile);
-                    Log.d("PROFILE==", "onResponse: "+rootObjectProfile.getData().full_name.toString());
+                    Log.d("MURAD", "onResponse: "+imageUrl);
 
+                    Picasso.with(getActivity()).load(imageUrl)
+                            .transform(new CropCircleTransformation()).into(profile_image);
+                    profileName.setText(name);
+                    //timer();
+                    followed_byTV.setText(followersNumber);
+                    followsTV.setText(followingNumber);
+                    mediaTV.setText(postNumber);
+                    //Add use profile image as icon
+//                    BottomNavigationView bottomNavigation=(BottomNavigationView)v.findViewById(R.id.bottomNavigation);
+//                    Menu menu= bottomNavigation.getMenu();
+//                    MenuItem menuItem=menu.findItem(R.id.profile);
+                    //menu.findItem(R.id.profile).setIcon(Picasso.with(getActivity()).load(rootObjectProfile.getData().getProfile_picture().toString()));
                 }
 
                 @Override
@@ -137,30 +169,20 @@ public class ProfileFragment extends Fragment {
 
                 }
             });
-
             return null;
         }
+
         @Override
         protected void onProgressUpdate(RootObjectProfile... values) {
 
-            CircleImageView profile_image= (CircleImageView)v.findViewById(R.id.profile_image);
-            TextView profileName=(TextView)v.findViewById(R.id.profileName);
-            TextView mediaTV=(TextView)v.findViewById(R.id.mediaTV);
-            TextView followed_byTV=(TextView)v.findViewById(R.id.followed_byTV);
-            TextView followsTV=(TextView)v.findViewById(R.id.followsTV);
-
-            Picasso.with(getActivity()).load(values[0].getData().getProfile_picture())
-                    .transform(new CropCircleTransformation()).into(profile_image);
-            profileName.setText(String.valueOf(values[0].getData().getFull_name()));
-
-            followed_byTV.setText(String.valueOf(values[0].getData().counts.getFollowed_by()));
-            followsTV.setText(String.valueOf(values[0].getData().counts.getFollows()));
-            mediaTV.setText(String.valueOf(values[0].getData().counts.getMedia()));
 
         }
+
         @Override
         protected void onPostExecute(Void aVoid) {
 //            Log.d("END==", "onPostExecute: ");
         }
     }
+
+
 }
