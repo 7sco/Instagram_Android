@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.franciscoandrade.instagram.DiscoverFragment">
+    tools:context="com.example.franciscoandrade.instagram.fragments.DiscoverFragment">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -50,6 +50,12 @@
 
             </android.support.design.widget.TextInputLayout>
 
+
+
+
+
+
+
         </LinearLayout>
         <ProgressBar
             android:id="@+id/progrssDiscovery"
@@ -63,10 +69,18 @@
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             />
 
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
         <ImageView
             android:id="@+id/randomImage"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:visibility="gone"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
             android:src="@mipmap/ic_launcher" />
@@ -88,8 +102,10 @@
                 android:background="@drawable/shadowthree" />
 
         </FrameLayout>
+    </LinearLayout>
 
     </LinearLayout>
+
 </RelativeLayout>
 
 

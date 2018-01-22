@@ -1,4 +1,4 @@
-package com.example.franciscoandrade.instagram;
+package com.example.franciscoandrade.instagram.fragments;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,6 +15,9 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.franciscoandrade.instagram.Adapters.CardAdapter;
+import com.example.franciscoandrade.instagram.CropCircleTransformation;
+import com.example.franciscoandrade.instagram.R;
 import com.example.franciscoandrade.instagram.jsonAccesProfile.RootObjectProfile;
 import com.example.franciscoandrade.instagram.jsonAccess.Datum;
 import com.example.franciscoandrade.instagram.jsonAccess.RootObject;
@@ -69,6 +72,27 @@ public class ProfileFragment extends Fragment {
         snapHelper2.attachToRecyclerView(recyclerView);
         //makeRequestWithOkHttp(ConstantsRestApi.ROOT_URL+ConstantsRestApi.URL_GET_RECENT_MEDIA_USER);
         return v;
+    }
+    private String tokenPicker(String username) {
+
+        switch (username){
+            case "xaviandrade14":
+                return "285348435.c2d73f8.49da2ae0b0c14a0b9c17c930b5ef116c";
+
+            case "7sc0de":
+                return "6814267018.171f074.be5da75622af4209bcb7b8a93d9c6498";
+
+
+            case "mrahimov1":
+                return "5406911792.f448b8d.a6705f94281f4bda8a8bb4238e7beeca";
+
+            case "randomamy_":
+                return "315656640.2a23084.a3bc42e3d993454ba0659379e6df1e13";
+
+            default:
+                return "285348435.c2d73f8.49da2ae0b0c14a0b9c17c930b5ef116c";
+        }
+
     }
 
     private void timer() {

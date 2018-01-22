@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ImageInfoActivity" />
-        <activity android:name=".RandomImageInfoActivity"></activity>
+        <activity android:name=".RandomImageInfoActivity" />
+        <activity android:name=".UserActivity"></activity>
     </application>
 
 </manifest>

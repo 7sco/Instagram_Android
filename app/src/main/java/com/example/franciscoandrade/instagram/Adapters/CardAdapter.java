@@ -1,4 +1,4 @@
-package com.example.franciscoandrade.instagram;
+package com.example.franciscoandrade.instagram.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.franciscoandrade.instagram.ImageInfoActivity;
+import com.example.franciscoandrade.instagram.R;
 import com.example.franciscoandrade.instagram.jsonAccess.Datum;
+import com.example.franciscoandrade.instagram.restApi.ConstantsRestApi;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -61,7 +64,11 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
                     Intent intent= new Intent(context, ImageInfoActivity.class);
                     intent.putExtra("imageUrl", cards.get(position).getImages().getStandard_resolution().getUrl().toString());
                     intent.putExtra("caption", cards.get(position).getCaption().getText().toString());
+                    intent.putExtra("comments", cards.get(position).getId().toString());
+                    intent.putExtra("token", ConstantsRestApi.ACCESS_TOKEN);
                     context.startActivity(intent);
+                    Log.d("COMMENT#=", "onCreate: "+ cards.get(position).getId());
+
                 }
             });
 

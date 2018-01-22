@@ -1,11 +1,18 @@
-package com.example.franciscoandrade.instagram;
+package com.example.franciscoandrade.instagram.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.franciscoandrade.instagram.CropCircleTransformation;
+import com.example.franciscoandrade.instagram.R;
+import com.example.franciscoandrade.instagram.UserActivity;
 import com.example.franciscoandrade.instagram.jsonUserSearch.DatumSearch;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
@@ -32,12 +39,25 @@ public class AdapterSearch extends RecyclerView.Adapter<AdapterSearch.SearchView
     }
 
     @Override
-    public void onBindViewHolder(SearchViewHolder holder, int position) {
+    public void onBindViewHolder(SearchViewHolder holder, final int position) {
         String imageUrl= listSearch.get(position).getProfile_picture().toString();
         Picasso.with(context).load(imageUrl)
                 .transform(new CropCircleTransformation()).into(holder.profile_image);
         holder.userNameTV.setText(listSearch.get(position).getUsername());
         holder.realNameTV.setText(listSearch.get(position).getfull_name());
+
+        holder.searchLL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("CLIKED++=", "onClick: "+listSearch.get(position).getId());
+                Intent intent= new Intent(context, UserActivity.class);
+                intent.putExtra("id", listSearch.get(position).getId().toString());
+                intent.putExtra("username", listSearch.get(position).getUsername());
+                context.startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override
@@ -55,11 +75,13 @@ public class AdapterSearch extends RecyclerView.Adapter<AdapterSearch.SearchView
 
         CircleImageView profile_image;
         TextView userNameTV, realNameTV;
+        LinearLayout searchLL;
         public SearchViewHolder(View itemView) {
             super(itemView);
             profile_image=(CircleImageView)itemView.findViewById(R.id.profile_image);
             userNameTV=(TextView) itemView.findViewById(R.id.userNameTV);
             realNameTV=(TextView) itemView.findViewById(R.id.realNameTV);
+            searchLL=(LinearLayout)itemView.findViewById(R.id.searchLL);
         }
     }
 }

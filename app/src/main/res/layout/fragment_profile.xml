@@ -5,7 +5,7 @@
 
     android:paddingTop="0dp"
     android:orientation="vertical"
-    tools:context="com.example.franciscoandrade.instagram.ProfileFragment">
+    tools:context="com.example.franciscoandrade.instagram.fragments.ProfileFragment">
     <ProgressBar
         android:id="@+id/progrssDiscovery"
         android:layout_width="match_parent"
@@ -17,10 +17,14 @@
         android:visibility="visible"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         />
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:orientation="vertical"
         android:paddingTop="10dp">
 
@@ -40,7 +44,8 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/profile_image"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -49,18 +54,12 @@
                     app:civ_border_color="#FF000000"
                     app:civ_border_width="0dp" />
 
-                <TextView
-                    android:id="@+id/profileName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="Name"
-                    android:textAlignment="center"
-                    android:textSize="20sp" />
+
             </LinearLayout>
 
 
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -158,7 +157,18 @@
 
                     </LinearLayout>
 
+                    <TextView
+                        android:id="@+id/profileName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/colorFABLight"
+                        android:text="Name"
+                        android:textAlignment="center"
+                        android:textSize="20sp"/>
                 </LinearLayout>
+
 
             </android.support.v7.widget.CardView>
 
@@ -186,5 +196,7 @@
 
 
     </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

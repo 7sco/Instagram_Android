@@ -10,6 +10,9 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.example.franciscoandrade.instagram.fragments.DiscoverFragment;
+import com.example.franciscoandrade.instagram.fragments.ProfileFragment;
+import com.example.franciscoandrade.instagram.fragments.SearchFragment;
 import com.example.franciscoandrade.instagram.restApi.ConstantsRestApi;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;

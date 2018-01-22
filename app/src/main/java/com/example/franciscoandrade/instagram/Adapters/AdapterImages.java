@@ -1,4 +1,4 @@
-package com.example.franciscoandrade.instagram;
+package com.example.franciscoandrade.instagram.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.franciscoandrade.instagram.R;
+import com.example.franciscoandrade.instagram.RandomImageInfoActivity;
 import com.example.franciscoandrade.instagram.UnsplashPOJO.Result;
 import com.squareup.picasso.Picasso;
 
@@ -37,13 +39,16 @@ public class AdapterImages extends RecyclerView.Adapter<AdapterImages.ImagesView
 
     @Override
     public void onBindViewHolder(ImagesViewHolder holder, final int position) {
-        String url=list.get(position+1).getUrls().getRegular().toString();
 
 
-        Picasso.with(context).load(url)
-                .resize(400, 400)
-                .centerCrop()
-                .into(holder.imageView);
+
+            String url=list.get(position).getUrls().getRegular().toString();
+            Picasso.with(context).load(url)
+                    .resize(400, 400)
+                    .centerCrop()
+                    .into(holder.imageView);
+
+
 
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override

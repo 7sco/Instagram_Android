@@ -9,5 +9,7 @@
     <color name="colorChangeET">#3ab8f1</color>
     <color name="colorFAB">#00bbff</color>
     <color name="bakground">#e3e3e3</color>
-    <color name="bluelight">#E1E2E1</color>
+    <color name="bluelight">#a9e1e2e1</color>
+    <color name="colorFABLight">#77d9fd</color>
+
 </resources>

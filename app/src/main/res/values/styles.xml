@@ -24,5 +24,8 @@
         <item name="colorAccent">@color/colorFAB</item>
         <item name="android:progressBackgroundTint">@color/editTextHint</item>
     </style>
+    <style name="ToolbarColoredBackArrow" parent="AppTheme">
+        <item name="android:textColorSecondary">@color/colorFAB</item>
+    </style>
 
 </resources>

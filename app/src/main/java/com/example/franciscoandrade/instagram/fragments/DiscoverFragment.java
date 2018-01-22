@@ -1,4 +1,4 @@
-package com.example.franciscoandrade.instagram;
+package com.example.franciscoandrade.instagram.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -22,12 +22,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.example.franciscoandrade.instagram.Adapters.AdapterImages;
+import com.example.franciscoandrade.instagram.R;
 import com.example.franciscoandrade.instagram.UnsplashPOJO.Result;
 import com.example.franciscoandrade.instagram.UnsplashPOJO.RootObjectUnsplash;
 import com.example.franciscoandrade.instagram.restApi.ConstantsRestApi;
 import com.example.franciscoandrade.instagram.restApi.EndPointApi;
 import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +54,7 @@ public class DiscoverFragment extends Fragment {
     private int offset;
     List<Result> newList = new ArrayList<>();
     ImageView randomImage;
+    int counter=0;
 
 
     private int progressStatus = 0;
@@ -105,6 +107,7 @@ public class DiscoverFragment extends Fragment {
         obtenerDatos(offset, true);
         keyTextListener();
         setHasOptionsMenu(true);
+        counter=0;
         return v;
     }
 
@@ -175,12 +178,13 @@ public class DiscoverFragment extends Fragment {
                     //Check the clear is working
 //                    List<Result> newList = response.body().getResults();
 
-                        if (response.body().getResults().get(0)!=null){
-                            Picasso.with(getActivity()).load(response.body().getResults().get(0).getUrls().getRegular().toString())
-                                .resize(400, 400)
-                                .centerInside()
-                                .into(randomImage);
-                        }
+//                        if (response.body().getResults().get(0)!=null && counter==0){
+//                            Picasso.with(getActivity()).load(response.body().getResults().get(0).getUrls().getRegular().toString())
+//                                .resize(400, 400)
+//                                .centerInside()
+//                                .into(randomImage);
+//                            counter++;
+//                        }
 
                     newList = response.body().getResults();
                     adapterImages.addImages(newList);
@@ -220,7 +224,7 @@ public class DiscoverFragment extends Fragment {
 //
 //                }
 //            });
-        //}
+//        }
     }
 
     @Override

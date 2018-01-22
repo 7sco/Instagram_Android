@@ -1,6 +1,7 @@
-package com.example.franciscoandrade.instagram;
+package com.example.franciscoandrade.instagram.fragments;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
@@ -15,8 +16,11 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 
+import com.example.franciscoandrade.instagram.Adapters.AdapterSearch;
+import com.example.franciscoandrade.instagram.R;
 import com.example.franciscoandrade.instagram.jsonUserSearch.DatumSearch;
 import com.example.franciscoandrade.instagram.jsonUserSearch.RootObjectSearchUser;
 import com.example.franciscoandrade.instagram.restApi.ConstantsRestApi;
@@ -76,11 +80,19 @@ public class SearchFragment extends Fragment {
                         String searchTermString = searchTerm.getText().toString();
                         obtenerDatos(searchTermString);
                         searchTerm.setText("");
+                        hideSoftKeyboard(getActivity());
                     }
                 }
                 return false;
             }
         });
+    }
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
     }
 
 
