@@ -2,6 +2,7 @@ package com.example.franciscoandrade.instagram.UnsplashPOJO;
 
 import com.example.franciscoandrade.instagram.jsonAccess.User;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -9,8 +10,7 @@ import java.util.List;
  * Created by franciscoandrade on 1/18/18.
  */
 
-public class Result
-{
+public class Result implements Serializable {
     public String id;
     public Date created_at;
     public Date updated_at;

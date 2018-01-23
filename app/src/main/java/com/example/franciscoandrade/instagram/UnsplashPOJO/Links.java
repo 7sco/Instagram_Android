@@ -1,10 +1,12 @@
 package com.example.franciscoandrade.instagram.UnsplashPOJO;
 
+import java.io.Serializable;
+
 /**
  * Created by franciscoandrade on 1/18/18.
  */
 
-public class Links
+public class Links implements Serializable
 {
     public String self;
     public String html;

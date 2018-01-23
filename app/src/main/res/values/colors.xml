@@ -11,5 +11,6 @@
     <color name="bakground">#e3e3e3</color>
     <color name="bluelight">#a9e1e2e1</color>
     <color name="colorFABLight">#77d9fd</color>
+    <color name="colorTransparent">#3effffff</color>
 
 </resources>

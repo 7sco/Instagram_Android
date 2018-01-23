@@ -9,13 +9,14 @@ public class ConstantsRestApi {
     public static final String VERSION = "/v1/";
     public static final String ROOT_URL = "https://api.instagram.com" + VERSION;
     //xaviandrade14
-    public static final String ACCESS_TOKEN = "TOKEN1";
+    public static final String ACCESS_TOKEN = "TOKEN";
     //7scode
-    public static final String ACCESS_TOKEN_7SC0DE = "TOKEN2";
+    public static final String ACCESS_TOKEN_7SC0DE = "TOKEN";
     //mrahimov1
-    public static final String ACCESS_TOKEN_MRAHIMOV1= "TOKEN3";
+    public static final String ACCESS_TOKEN_MRAHIMOV1= "TOKEN";
     //randomamy_
-    public static final String ACCESS_TOKEN_RANDOMAMY_ = "TOKEN4";
+    public static final String ACCESS_TOKEN_RANDOMAMY_ = "TOKEN";
+
 
 
     public static final String KEY_ACCESS_TOKEN = "?access_token=";
